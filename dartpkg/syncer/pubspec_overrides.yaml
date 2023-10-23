@@ -1,0 +1,5 @@
+dependency_overrides:
+  context:
+    path: ../../node_modules/@octohelm/dart-context
+  logr:
+    path: ../../node_modules/@octohelm/dart-logr

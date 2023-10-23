@@ -1,0 +1,103 @@
+"""
+清单模板
+"""
+type FormData {
+    """
+    项目名称
+    """
+    projectID: String! @input_by_text_input
+
+    """
+    地址
+
+    [@embed](docs/project_readme.md)
+    """
+    address:   String! @input_by_text_input
+
+    """
+    现场照片
+
+    请清晰拍摄现场设施
+    """
+    photos: [Photo]
+
+    """
+    算法配置
+    """
+    alg: Alg!
+
+    """
+    更新时间
+    """
+    updatedAt: Timestamp @input_by_operation_time(type: ON_COMMITTED)
+    """
+    创建时间
+    """
+    createdAt: Timestamp @input_by_operation_time(type: ON_CREATED)
+}
+
+type Photo {
+    url: String! @input_by_file_selector(accept: "image/*")
+}
+
+union Alg = AlgWhenCPUOnly | AlgWhenGPUOnly | AlgWhenPreferCPU | AlgWhenPreferGPU
+
+interface AlgBase {
+    """
+    算法硬件类型
+    """
+    kind: String!
+
+    """
+    备注
+    """
+    backup: String
+}
+
+type AlgWhenCPUOnly implements AlgBase {
+    kind(
+        """
+        仅支持 CPU
+        """
+        of: String = CPU_ONLY
+    ): String!
+
+    backup: String
+}
+
+type AlgWhenGPUOnly implements AlgBase  {
+    """
+    仅支持 GPU
+    """
+    kind(of: String = GPU_ONLY): String!
+
+    backup: String
+
+    """
+    请求 GPU 卡数
+    """
+    requests: Int!
+}
+
+type AlgWhenPreferCPU implements AlgBase  {
+    """
+    CPU 优先
+    """
+    kind(of: String = PREFER_CPU): String!
+
+    backup: String
+}
+
+type AlgWhenPreferGPU implements AlgBase  {
+    """
+    GPU 优先
+    """
+    kind(of: String = PREFER_GPU): String!
+
+    backup: String
+
+    """
+    请求 GPU 卡数
+    """
+    requests: Int
+}

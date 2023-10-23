@@ -1,0 +1,145 @@
+"""
+输入类型：输入补全选项
+"""
+directive @input_by_complete(
+  """
+  查询地址
+  支持格式 <http_endpoint>?q=<query_string>
+  并且返回格式为 List<{ label: string, value: any }>
+  """
+  searchURL: String!
+) on FIELD_DEFINITION
+
+"""
+输入类型: 日期时间选择
+"""
+directive @input_by_datetime_picker(
+  """
+  显示格式
+
+  默认值 yyyy-MM-dd HH:mm
+  当只有日期相关格式时，时间选择器省略
+  """
+  format: String
+
+  """
+  最小时间
+  """
+  min: Timestamp
+
+  """
+  最大时间
+  """
+  max: Timestamp
+) on FIELD_DEFINITION
+
+"""
+输入类型：文件选择器
+"""
+directive @input_by_file_selector(
+  """
+  支持的文件类型
+
+  不支持 文件扩展名，只认 MIME type 全称
+  可用 image/*
+
+  当为 image/* 时，为图片选择
+  """
+  accept: String
+) on FIELD_DEFINITION
+
+"""
+输入类型： 数字
+"""
+directive @input_by_number_input(
+  """
+  最小值
+  """
+  min: Int
+
+  """
+  最大值
+  """
+  max: Int
+) on FIELD_DEFINITION
+
+"""
+输入类型：操作时间
+"""
+directive @input_by_operation_time(
+  """
+  操作时间类型
+  """
+  type: OperationTimeType!
+) on FIELD_DEFINITION
+
+"""
+输入类型： 选项
+"""
+directive @input_by_selector(
+  """
+  可用选项
+  """
+  options: [Option]!
+) on FIELD_DEFINITION
+
+"""
+输入类型：文本
+"""
+directive @input_by_text_input(
+  """
+  文本预设格式
+  """
+  format: String
+
+  """
+  文本限制
+  """
+  mask: String
+
+  """
+  格式正则约束
+  """
+  pattern: String
+
+  """
+  最小字符数
+  """
+  minChars: Int
+
+  """
+  最大字符数
+  """
+  maxChars: Int
+) on FIELD_DEFINITION
+
+scalar Any
+
+enum OperationTimeType {
+  """
+  提交时间
+  """
+  ON_COMMITTED
+
+  """
+  创建时间
+  """
+  ON_CREATED
+}
+
+input Option {
+  """
+  选项描述
+  """
+  label: String
+  """
+  选项值
+  """
+  value: Any!
+}
+
+"""
+时间字符串 ISO8601
+"""
+scalar Timestamp
+

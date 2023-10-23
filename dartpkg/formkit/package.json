@@ -1,0 +1,22 @@
+{
+  "name": "@innoai-tech/dart-formkit",
+  "version": "0.1.0",
+  "description": "formkit",
+  "license": "MIT",
+  "type": "module",
+  "dependencies": {
+    "@octohelm/dart-context": "^0.1.2",
+    "@octohelm/dart-logr": "^0.2.0",
+    "@innoai-tech/dart-setup_widget": "workspace:^",
+    "@innoai-tech/dart-storage": "workspace:^"
+  },
+  "scripts": {
+    "fmt": "dart fix --apply && dart format -o write ./lib",
+    "test": "flutter test",
+    "gen": "dart run build_runner build --delete-conflicting-outputs",
+    "postinstall": "bunx @octohelm/dartpkg postinstall"
+  },
+  "exports": {
+    "bun": "./pubspec.yaml"
+  }
+}

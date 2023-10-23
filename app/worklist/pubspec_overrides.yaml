@@ -1,0 +1,17 @@
+dependency_overrides:
+  setup_widget:
+    path: ../../dartpkg/setup_widget
+  logr:
+    path: ../../node_modules/@octohelm/dart-logr
+  context:
+    path: ../../node_modules/@octohelm/dart-context
+  storage:
+    path: ../../dartpkg/storage
+  syncer:
+    path: ../../dartpkg/syncer
+  crpe:
+    path: ../../dartpkg/crpe
+  roundtripper:
+    path: ../../node_modules/@octohelm/dart-roundtripper
+  formkit:
+    path: ../../dartpkg/formkit

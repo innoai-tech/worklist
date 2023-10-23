@@ -1,0 +1,11 @@
+dependency_overrides:
+  context:
+    path: ../../node_modules/@octohelm/dart-context
+  logr:
+    path: ../../node_modules/@octohelm/dart-logr
+  roundtripper:
+    path: ../../node_modules/@octohelm/dart-roundtripper
+  storage:
+    path: ../storage
+  setup_widget:
+    path: ../setup_widget

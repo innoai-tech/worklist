@@ -1,0 +1,66 @@
+{
+	"$defs": {
+		"distribution_Manifest": {
+			"properties": {
+				"annotations": {
+					"additionalProperties": {
+						"type": "string"
+					},
+					"propertyNames": {
+						"type": "string"
+					},
+					"type": "object"
+				},
+				"artifact": {
+					"type": "string"
+				},
+				"platform": {
+					"$ref": "#/$defs/opencontainers_image_spec_specs_go_v1_Platform"
+				}
+			},
+			"required": ["artifact", "platform"],
+			"type": "object"
+		},
+		"opencontainers_image_spec_specs_go_v1_Platform": {
+			"properties": {
+				"architecture": {
+					"type": "string"
+				},
+				"os": {
+					"type": "string"
+				},
+				"os.features": {
+					"items": {
+						"type": "string"
+					},
+					"type": "array"
+				},
+				"os.version": {
+					"type": "string"
+				},
+				"variant": {
+					"type": "string"
+				}
+			},
+			"required": ["architecture", "os"],
+			"type": "object"
+		}
+	},
+	"$schema": "https://json-schema.org/draft/2020-12/schema",
+	"properties": {
+		"manifests": {
+			"items": {
+				"$ref": "#/$defs/distribution_Manifest"
+			},
+			"type": "array"
+		},
+		"name": {
+			"type": "string"
+		},
+		"version": {
+			"type": "string"
+		}
+	},
+	"required": ["name", "manifests"],
+	"type": "object"
+}

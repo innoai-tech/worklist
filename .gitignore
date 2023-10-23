@@ -1,0 +1,10 @@
+.dart_tool/
+.turbo/
+build/
+*.iml
+
+.secrets/
+.env.local
+.flutter-plugins
+.flutter-plugins-dependencies
+pubspec.lock

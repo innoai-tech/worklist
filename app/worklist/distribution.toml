@@ -1,0 +1,8 @@
+#:schema ../../pkg/distribution/config.schema.json
+
+name = "worklist/app"
+
+[[manifests]]
+platform.os = "android"
+platform.architecture = "arm64"
+artifact = "build/app/outputs/flutter-apk/app-arm64-v8a-release.apk"
