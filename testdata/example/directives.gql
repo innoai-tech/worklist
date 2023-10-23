@@ -1,0 +1,15 @@
+directive @input_by_complete(searchURL: String!) on INPUT_FIELD_DEFINITION
+
+directive @input_by_file_selector(accept: String) on INPUT_FIELD_DEFINITION
+
+directive @input_by_selector(options: [Option]!) on INPUT_FIELD_DEFINITION
+
+directive @input_by_text_input(format: String, mask: String, minLength: Int, maxLength: Int, pattern: String) on INPUT_FIELD_DEFINITION
+
+scalar Any
+scalar Timestamp
+
+input Option {
+    label: String
+    value: Any!
+}

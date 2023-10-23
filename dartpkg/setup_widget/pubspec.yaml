@@ -1,0 +1,12 @@
+name: setup_widget
+version: 0.1.0
+environment:
+  sdk: '>=3.1.0 <4.0.0'
+dependencies:
+  flutter:
+    sdk: flutter
+  rxdart: ^0.27.7
+  provider: ^6.0.5
+dev_dependencies:
+  flutter_test:
+    sdk: flutter

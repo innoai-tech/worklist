@@ -1,0 +1,15 @@
+{
+  "name": "@innoai-tech/dart-worklist",
+  "version": "0.1.0",
+  "description": "worklist app",
+  "license": "MIT",
+  "type": "module",
+  "scripts": {
+    "lint": "dart fix --apply && dart format -o write ./lib",
+    "test": "echo skip",
+    "postinstall": "bunx @octohelm/dartpkg postinstall"
+  },
+  "exports": {
+    "bun": "./pubspec.yaml"
+  }
+}

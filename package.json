@@ -1,0 +1,21 @@
+{
+  "name": "worklist",
+  "type": "module",
+  "version": "1.0.0",
+  "private": true,
+  "workspaces": [
+    "app/*",
+    "dartpkg/*"
+  ],
+  "engines": {
+    "bun": ">= 1"
+  },
+  "devDependencies": {
+    "@octohelm/dartpkg": "^0.1.5",
+    "bun-types": "^1.0.7",
+    "prettier": "^3.0.3",
+    "turbo": "^1.10.15",
+    "typescript": "^5.2.2"
+  },
+  "prettier": {}
+}

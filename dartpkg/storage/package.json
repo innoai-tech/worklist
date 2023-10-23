@@ -1,0 +1,15 @@
+{
+  "name": "@innoai-tech/dart-storage",
+  "version": "0.1.0",
+  "description": "blob storage",
+  "license": "MIT",
+  "type": "module",
+  "scripts": {
+    "lint": "dart fix --apply && dart format -o write ./lib",
+    "gen": "dart run build_runner build --delete-conflicting-outputs",
+    "postinstall": "bunx @octohelm/dartpkg postinstall"
+  },
+  "exports": {
+    "bun": "./pubspec.yaml"
+  }
+}
