@@ -1,0 +1,18 @@
+{
+  "name": "@innoai-tech/dart-syncer",
+  "version": "0.1.0",
+  "description": "syncer",
+  "license": "MIT",
+  "type": "module",
+  "dependencies": {
+  },
+  "scripts": {
+    "fmt": "dart fix --apply && dart format -o write ./lib",
+    "test": "dart test",
+    "gen": "dart run build_runner build --delete-conflicting-outputs",
+    "postinstall": "bunx @octohelm/dartpkg postinstall"
+  },
+  "exports": {
+    "bun": "./pubspec.yaml"
+  }
+}

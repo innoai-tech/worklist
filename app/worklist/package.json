@@ -1,0 +1,23 @@
+{
+  "name": "@innoai-tech/dart-worklistapp",
+  "version": "0.1.0",
+  "description": "worklist app",
+  "license": "MIT",
+  "type": "module",
+  "scripts": {
+    "lint": "dart fix --apply && dart format -o write ./lib",
+    "gen": "dart run build_runner build --delete-conflicting-outputs",
+    "test": "echo skip",
+    "postinstall": "bunx @octohelm/dartpkg postinstall"
+  },
+  "dependencies": {
+    "@innoai-tech/dart-setup_widget": "workspace:^",
+    "@innoai-tech/dart-storage": "workspace:^",
+    "@innoai-tech/dart-syncer": "workspace:^",
+    "@innoai-tech/dart-crpe": "workspace:^",
+    "@octohelm/dart-roundtripper": "^0.1.2"
+  },
+  "exports": {
+    "bun": "./pubspec.yaml"
+  }
+}

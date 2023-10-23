@@ -1,0 +1,33 @@
+name: Publish
+
+on:
+  push:
+    branches:
+      - "main"
+  pull_request:
+    branches:
+      - "*"
+
+jobs:
+  release:
+    runs-on: ubuntu-latest
+    env:
+      GH_USERNAME: ${{ github.actor }}
+      GH_PASSWORD: ${{ secrets.GITHUB_TOKEN }}
+
+    steps:
+      - uses: docker/setup-qemu-action@v3
+      - uses: actions/checkout@v3
+      - uses: docker/setup-qemu-action@v2
+      - run: curl -sSLf https://raw.githubusercontent.com/octohelm/wagon/main/install.sh | sudo sh
+
+      - run: make archive
+
+      - if: ${{ matrix.target == 'archive' && github.ref == 'refs/heads/main' }}
+        uses: "marvinpinto/action-automatic-releases@latest"
+        with:
+          automatic_release_tag: "latest"
+          repo_token: "${{ secrets.GITHUB_TOKEN }}"
+          prerelease: true
+          files: |
+            .wagon/build/*.tar.gz

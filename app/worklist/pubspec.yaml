@@ -1,0 +1,27 @@
+name: worklistapp
+version: 0.1.0
+environment:
+  sdk: '>=3.2.0 <4.0.0'
+dependencies:
+  flutter:
+    sdk: flutter
+  cupertino_icons: ^1.0.6
+  setup_widget: ^0.1.0
+  flutter_inappwebview: ^6.0.0-beta.28
+  roundtripper: ^0.1.2
+  context: ^0.1.2
+  logr: ^0.1.2
+  path_provider: ^2.1.1
+  storage: ^0.1.0
+  rxdart: ^0.27.7
+  copy_with_extension: ^5.0.4
+  json_annotation: ^4.8.1
+  crpe: ^0.1.0
+  syncer: ^0.1.0
+dev_dependencies:
+  json_serializable: ^6.7.0
+  copy_with_extension_gen: ^5.0.4
+  test: ^1.24.3
+  build_runner: ^2.4.6
+flutter:
+  uses-material-design: true

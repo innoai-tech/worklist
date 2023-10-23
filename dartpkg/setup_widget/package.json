@@ -1,0 +1,15 @@
+{
+  "name": "@innoai-tech/dart-setup_widget",
+  "version": "0.1.0",
+  "description": "setup widget inspired by vue",
+  "license": "MIT",
+  "type": "module",
+  "scripts": {
+    "lint": "dart fix --apply && dart format -o write ./lib",
+    "test": "flutter test",
+    "postinstall": "bunx @octohelm/dartpkg postinstall"
+  },
+  "exports": {
+    "bun": "./pubspec.yaml"
+  }
+}

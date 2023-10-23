@@ -1,0 +1,58 @@
+input FormData {
+    """
+    项目名称
+    """
+    projectID: String! @input_by_text_input
+
+    """
+    地址
+
+    [@embed](docs/project_readme.md)
+    """
+    address:   String! @input_by_text_input
+
+    """
+    现场照片
+    """
+    photos: [Photo]
+
+    """
+    算法配置
+    """
+    alg: Alg!
+
+    createdAt: Timestamp # 隐藏字段
+}
+
+input Photo {
+    url: String! @input_by_file_selector(accept: "image/*")
+}
+
+input Alg {
+    """
+    算法硬件类型
+    """
+    kind: AlgKind!
+}
+
+enum AlgKind {
+    """
+    仅支持 CPU
+    """
+    CPU_ONLY
+
+    """
+    仅支持 GPU
+    """
+    GPU_ONLY
+
+    """
+    CPU 优先
+    """
+    PREFER_CPU
+
+    """
+    GPU 优先
+    """
+    PREFER_GPU
+}

@@ -1,0 +1,11 @@
+name: syncer
+version: 0.1.0
+environment:
+  sdk: '>=3.2.0 <4.0.0'
+dependencies:
+  context: ^0.1.2
+  logr: ^0.1.2
+  rxdart: ^0.27.7
+dev_dependencies:
+  json_serializable: ^6.7.1
+  test: ^1.24.9
