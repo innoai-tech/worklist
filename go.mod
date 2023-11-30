@@ -5,7 +5,7 @@ go 1.21
 require (
 	github.com/go-json-experiment/json v0.0.0-20231102232822-2e55bd4e08b0
 	github.com/gomarkdown/markdown v0.0.0-20230922112808-5421fefb8386
-	github.com/google/go-containerregistry v0.16.1
+	github.com/google/go-containerregistry v0.17.0
 	github.com/graphql-go/graphql v0.8.1
 	github.com/innoai-tech/infra v0.0.0-20231108020032-bb4d4fac418c
 	github.com/octohelm/unifs v0.0.0-20230816084439-cf22cfd33f43
