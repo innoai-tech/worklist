@@ -4,11 +4,10 @@ go 1.21
 
 require (
 	github.com/avast/apkparser v0.0.0-20231031113741-3ff9e55acf2f
-	github.com/davecgh/go-spew v1.1.2-0.20180830191138-d8f796af33cc
 	github.com/go-courier/logr v0.3.0
 	github.com/go-json-experiment/json v0.0.0-20231102232822-2e55bd4e08b0
 	github.com/gomarkdown/markdown v0.0.0-20231115200524-a660076da3fd
-	github.com/google/go-containerregistry v0.17.0
+	github.com/google/go-containerregistry v0.18.0
 	github.com/graphql-go/graphql v0.8.1
 	github.com/innoai-tech/infra v0.0.0-20231124085701-81f94504013c
 	github.com/octohelm/gengo v0.0.0-20230809023313-1339e47458a4
