@@ -8,3 +8,7 @@ build/
 .flutter-plugins
 .flutter-plugins-dependencies
 pubspec.lock
+
+
+.idea/
+node_modules/

@@ -36,7 +36,7 @@ type OptionFunc = func(o *converter)
 
 func NewConverter(optionFns ...OptionFunc) Converter {
 	c := &converter{
-		fs: local.NewLocalFS(""),
+		fs: local.NewFS(""),
 	}
 	for i := range optionFns {
 		optionFns[i](c)

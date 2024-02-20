@@ -38,7 +38,7 @@ func (s *Exporter) Run(ctx context.Context) error {
 		return err
 	}
 
-	fs := local.NewLocalFS(cwd)
+	fs := local.NewFS(cwd)
 
 	if err := fsutil.MkdirAll(ctx, fs, filepath.Dir(s.Output), os.ModePerm); err != nil {
 		return err

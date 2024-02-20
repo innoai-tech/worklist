@@ -34,7 +34,7 @@ type OptionFunc = func(o *loader)
 
 func NewLoader(fns ...OptionFunc) Loader {
 	l := &loader{
-		fs:        local.NewLocalFS(""),
+		fs:        local.NewFS(""),
 		artifacts: map[string]Artifact{},
 	}
 

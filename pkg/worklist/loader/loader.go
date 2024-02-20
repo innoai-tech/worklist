@@ -1,8 +1,12 @@
 package loader
 
 import (
+	"bytes"
 	"context"
 	"fmt"
+	"github.com/octohelm/unifs/pkg/filesystem"
+	"io"
+	"io/fs"
 	"os"
 	"reflect"
 	"strings"
@@ -15,7 +19,6 @@ import (
 	"github.com/pkg/errors"
 
 	"github.com/innoai-tech/worklist/pkg/collection"
-	"github.com/innoai-tech/worklist/pkg/fsutil"
 	"github.com/innoai-tech/worklist/pkg/jtd"
 	"github.com/innoai-tech/worklist/pkg/md"
 	"github.com/innoai-tech/worklist/pkg/worklist"
@@ -32,6 +35,20 @@ func WithWorkingDir(wd string) OptionFunc {
 
 type OptionFunc func(l *loader)
 
+func loadGraphQlTo(ctx context.Context, w io.Writer, fs filesystem.FileSystem, filename string) error {
+	f, err := fs.OpenFile(ctx, filename, os.O_RDONLY, os.ModePerm)
+	if err != nil {
+		return errors.Wrap(err, "open file failed")
+	}
+
+	defer f.Close()
+	_, err = io.Copy(w, f)
+	if err != nil {
+		return errors.Wrap(err, "read failed")
+	}
+	return nil
+}
+
 func Load(ctx context.Context, optFns ...OptionFunc) (*worklist.WorkList, error) {
 	l := &loader{
 		entrypoint:  "schema.gql",
@@ -42,21 +59,36 @@ func Load(ctx context.Context, optFns ...OptionFunc) (*worklist.WorkList, error)
 		fn(l)
 	}
 
-	fs := local.NewLocalFS(l.workingDir)
-	l.converter = md.NewConverter(md.WithFS(fs))
+	fsys := local.NewFS(l.workingDir)
+	l.converter = md.NewConverter(md.WithFS(fsys))
 
-	f, err := fs.OpenFile(ctx, l.entrypoint, os.O_RDONLY, os.ModePerm)
-	if err != nil {
-		return nil, errors.Wrap(err, "open file failed")
+	files := make([]string, 0)
+
+	if err := filesystem.WalkDir(ctx, fsys, ".", func(path string, d fs.DirEntry, err error) error {
+		if d.IsDir() && path != "." {
+			return fs.SkipDir
+		}
+
+		if strings.HasSuffix(path, ".gql") && !strings.HasSuffix(path, ".d.gql") {
+			files = append(files, path)
+		}
+
+		return nil
+	}); err != nil {
+		return nil, err
 	}
-	data, err := fsutil.ReadAll(f)
-	if err != nil {
-		return nil, errors.Wrap(err, "read failed")
+
+	buf := bytes.NewBuffer(nil)
+
+	for _, f := range files {
+		if err := loadGraphQlTo(ctx, buf, fsys, f); err != nil {
+			return nil, err
+		}
 	}
 
 	params := parser.ParseParams{
 		Source: &source.Source{
-			Body: data,
+			Body: buf.Bytes(),
 		},
 		Options: parser.ParseOptions{
 			NoSource:   true,
@@ -367,7 +399,7 @@ func (ldr *loader) SchemaFromAST(node ast.Node) (jtd.Schema, error) {
 							}
 
 							if e.Key != tu.Discriminator {
-								panic(errors.Errorf("invalid tagged tagged union, discriminator should be %s but got %s", tu.Discriminator, e.Key))
+								panic(errors.Errorf("%s: invalid tagged union, discriminator should be %s but got %s", named.Name.Value, tu.Discriminator, e.Key))
 							}
 
 							for key, value := range e.Value.Meta() {
