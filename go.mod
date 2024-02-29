@@ -4,7 +4,6 @@ go 1.22
 
 require (
 	github.com/avast/apkparser v0.0.0-20231031113741-3ff9e55acf2f
-	github.com/davecgh/go-spew v1.1.2-0.20180830191138-d8f796af33cc
 	github.com/go-courier/logr v0.3.0
 	github.com/go-json-experiment/json v0.0.0-20231102232822-2e55bd4e08b0
 	github.com/gomarkdown/markdown v0.0.0-20231222211730-1d6d20845b47
@@ -19,7 +18,7 @@ require (
 	github.com/opencontainers/image-spec v1.1.0
 	github.com/pelletier/go-toml/v2 v2.1.1
 	github.com/pkg/errors v0.9.1
-	github.com/stretchr/objx v0.5.1
+	github.com/stretchr/objx v0.5.2
 	golang.org/x/mod v0.15.0
 )
 
