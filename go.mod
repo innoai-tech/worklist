@@ -4,11 +4,10 @@ go 1.22
 
 require (
 	github.com/avast/apkparser v0.0.0-20231031113741-3ff9e55acf2f
-	github.com/davecgh/go-spew v1.1.2-0.20180830191138-d8f796af33cc
 	github.com/go-courier/logr v0.3.0
 	github.com/go-json-experiment/json v0.0.0-20231102232822-2e55bd4e08b0
 	github.com/gomarkdown/markdown v0.0.0-20231222211730-1d6d20845b47
-	github.com/google/go-containerregistry v0.19.0
+	github.com/google/go-containerregistry v0.19.1
 	github.com/graphql-go/graphql v0.8.1
 	github.com/innoai-tech/infra v0.0.0-20240123073205-8d9b32ddacc6
 	github.com/octohelm/gengo v0.0.0-20240116032423-048028ecb7bb
